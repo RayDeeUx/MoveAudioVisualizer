@@ -1,11 +1,11 @@
 {
-	"geode": "2.0.0-beta.27",
+	"geode": "3.0.0",
 	"gd": {
-		"android": "2.205",
-		"win": "2.204",
-		"macos": "2.200"
+		"android": "2.206",
+		"win": "2.206",
+		"macos": "2.206"
 	},
-	"version": "v1.0.1",
+	"version": "v1.1.0",
 	"id": "raydeeux.moveaudiovisualizer",
 	"name": "MoveAudioVisualizer",
 	"developer": "RayDeeUx",
@@ -13,7 +13,7 @@
 	"dependencies": [
 		{
 			"id": "geode.node-ids",
-			"version": ">=1.11.0",
+			"version": ">=1.12.0",
 			"importance": "required"
 		}
 	],
