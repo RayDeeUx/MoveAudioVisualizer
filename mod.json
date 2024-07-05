@@ -10,6 +10,7 @@
 	"name": "MoveAudioVisualizer",
 	"developer": "RayDeeUx",
 	"description": "Moves the Audio Visualizer towards the bottom of the screen, or to a position of your choice.",
+	"repository": "https://github.com/RayDeeUx/MoveAudioVisualizer",
 	"dependencies": [
 		{
 			"id": "geode.node-ids",
