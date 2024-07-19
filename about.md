@@ -9,3 +9,5 @@ Settings for "RayDeeUx mode", in case you want to replicate them youself:
 - SFX Visualizer X Position: `[your screen width] * 0.75`
 - SFX Visualizer Y Position: `15`
 - SFX Visualizer Rotation + Scale: `90` degrees at `0.75`x scale
+
+This [Geode mod](https://geode-sdk.org) is licensed under LGPLv2. To report bugs or get help with using my mods, press the Discord button on the lower left corner.
