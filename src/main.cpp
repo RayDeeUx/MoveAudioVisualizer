@@ -13,8 +13,8 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 		if (!Mod::get()->getSettingValue<bool>("editorLayer") && lel) return true;
 		auto uiLayer = getChildByID("UILayer");
 		if (!uiLayer) return true;
-		auto fmodMusic = getChildOfType<FMODLevelVisualizer>(uiLayer, 0);
-		auto fmodSFX = getChildOfType<FMODLevelVisualizer>(uiLayer, 1);
+		auto fmodMusic = uiLayer->getChildByType<FMODLevelVisualizer>(0);
+		auto fmodSFX = uiLayer->getChildByType<FMODLevelVisualizer>(1);
 		if (!fmodMusic || !fmodSFX) return true;
 		MyGJBaseGameLayer::repositionMusicAndSFX(fmodMusic, fmodSFX);
 		return true;
