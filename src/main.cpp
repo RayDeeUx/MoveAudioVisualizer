@@ -6,13 +6,12 @@ class $modify(MyUILayer, UILayer) {
 	// bool init(GJBaseGameLayer*)
 	bool init(GJBaseGameLayer* p0) {
 		if (!UILayer::init(p0)) return false;
+		log::info("ok");
 		if (!Mod::get()->getSettingValue<bool>("enabled")) return true;
-		const auto pl = PlayLayer::get();
-		const auto lel = LevelEditorLayer::get();
-		if (!pl && !lel) return true;
+		log::info("now");
 		log::info("foo");
-		if (!Mod::get()->getSettingValue<bool>("playLayer") && pl == p0) return true;
-		if (!Mod::get()->getSettingValue<bool>("editorLayer") && lel == p0) return true;
+		if (!Mod::get()->getSettingValue<bool>("playLayer") && typeinfo_cast<PlayLayer*>(p0)) return true;
+		if (!Mod::get()->getSettingValue<bool>("editorLayer") && typeinfo_cast<LevelEditorLayer*>(p0)) return true;
 		log::info("bar");
 		auto fmodMusic = this->getChildByType<FMODLevelVisualizer>(0);
 		auto fmodSFX = this->getChildByType<FMODLevelVisualizer>(1);
