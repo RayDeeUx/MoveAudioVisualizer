@@ -1,24 +1,21 @@
-#include <Geode/modify/UILayer.hpp>
+#include <Geode/modify/GJBaseGameLayer.hpp>
 
 using namespace geode::prelude;
 
-class $modify(MyUILayer, UILayer) {
-	bool init(GJBaseGameLayer* p0) {
-		if (!UILayer::init(p0)) return false;
+class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
+	bool init() {
+		if (!GJBaseGameLayer::init()) return false;
 		if (!Mod::get()->getSettingValue<bool>("enabled")) return true;
-		if (!Mod::get()->getSettingValue<bool>("playLayer") && typeinfo_cast<PlayLayer*>(p0)) return true;
-		if (!Mod::get()->getSettingValue<bool>("editorLayer") && typeinfo_cast<LevelEditorLayer*>(p0)) return true;
-		for (const auto node : CCArrayExt<CCNode*>(this->getChildren())) {
-			log::info("node: {}", node);
-		}
-		auto fmodMusic = this->getChildByType<FMODLevelVisualizer>(0);
-		auto fmodSFX = this->getChildByType<FMODLevelVisualizer>(1);
-		if (!fmodMusic || !fmodSFX) return true;
-		log::info("baz");
-		MyUILayer::repositionMusicAndSFX(fmodMusic, fmodSFX);
+		const auto pl = PlayLayer::get();
+		const auto lel = LevelEditorLayer::get();
+		if (!pl && !lel) return true;
+		if (!Mod::get()->getSettingValue<bool>("playLayer") && pl == this) return true;
+		if (!Mod::get()->getSettingValue<bool>("editorLayer") && lel == this) return true;
+		if (!m_audioVisualizerBG || !m_audioVisualizerSFX) return true;
+		MyGJBaseGameLayer::repositionMusicAndSFX();
 		return true;
 	}
-	void repositionMusicAndSFX(FMODLevelVisualizer* fmodMusic, FMODLevelVisualizer* fmodSFX) {
+	void repositionMusicAndSFX(FMODLevelVisualizer* fmodMusic = m_audioVisualizerBG, FMODLevelVisualizer* fmodSFX = m_audioVisualizerSFX) {
 		if (!Mod::get()->getSettingValue<bool>("enabled")) return;
 		if (!Mod::get()->getSettingValue<bool>("raydeeuxMode")) {
 			fmodMusic->setPosition(Mod::get()->getSettingValue<int64_t>("musicPositionX"), Mod::get()->getSettingValue<int64_t>("musicPositionY"));
