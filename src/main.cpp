@@ -9,8 +9,8 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 		const auto pl = PlayLayer::get();
 		const auto lel = LevelEditorLayer::get();
 		if (!pl && !lel) return true;
-		if (!Mod::get()->getSettingValue<bool>("playLayer") && pl == this) return true;
-		if (!Mod::get()->getSettingValue<bool>("editorLayer") && lel == this) return true;
+		if (!Mod::get()->getSettingValue<bool>("playLayer") && pl) return true;
+		if (!Mod::get()->getSettingValue<bool>("editorLayer") && lel) return true;
 		if (!m_audioVisualizerBG || !m_audioVisualizerSFX) return true;
 		MyGJBaseGameLayer::repositionMusicAndSFX();
 		return true;
