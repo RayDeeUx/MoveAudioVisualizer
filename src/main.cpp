@@ -12,10 +12,10 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 		if (!Mod::get()->getSettingValue<bool>("playLayer") && pl) return true;
 		if (!Mod::get()->getSettingValue<bool>("editorLayer") && lel) return true;
 		if (!m_audioVisualizerBG || !m_audioVisualizerSFX) return true;
-		MyGJBaseGameLayer::repositionMusicAndSFX();
+		MyGJBaseGameLayer::repositionMusicAndSFX(m_audioVisualizerBG, m_audioVisualizerSFX);
 		return true;
 	}
-	void repositionMusicAndSFX(FMODLevelVisualizer* fmodMusic = m_audioVisualizerBG, FMODLevelVisualizer* fmodSFX = m_audioVisualizerSFX) {
+	void repositionMusicAndSFX(FMODLevelVisualizer* fmodMusic, FMODLevelVisualizer* fmodSFX) {
 		if (!Mod::get()->getSettingValue<bool>("enabled")) return;
 		if (!Mod::get()->getSettingValue<bool>("raydeeuxMode")) {
 			fmodMusic->setPosition(Mod::get()->getSettingValue<int64_t>("musicPositionX"), Mod::get()->getSettingValue<int64_t>("musicPositionY"));
